@@ -1,0 +1,75 @@
+<%+header%>
+<%
+local sys = require "luci.sys"
+-- 获取当前系统版本（去除换行）
+local current_version = sys.exec("cat /etc/lenyu_version"):gsub("\n", "")
+
+-- 从 GitHub 获取最新版本并保存到 /usr/share/cloud_ts_version
+os.execute('wget -qO- -t1 -T2 "https://api.github.com/repos/Blueplanet20120/immortalwrt-86/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" \'{print $2}\' | sed \'s/\"//g;s/,//g;s/ //g\' > /usr/share/cloud_ts_version')
+
+-- 读取云端版本（仅保留 "_" 前部分）
+local cloud_version = sys.exec("cat /usr/share/cloud_ts_version | cut -d '_' -f 1"):gsub("\n", "")
+local has_new = (current_version ~= cloud_version) and true or false
+%>
+
+<h1><%= translate("系统更新") %></h1>
+
+<!-- 当前版本号 -->
+<p style="font-size:16px;">
+    <%= translate("当前版本") %>：<strong><%= current_version %></strong>
+</p>
+
+<div id="update-container">
+    <% if has_new then %>
+    <form id="update-form">
+        <p>
+            <button type="submit" name="action" value="update"
+                    style="border:2px solid #4CAF50; padding:10px 20px; font-size:16px; background:#fff; cursor:pointer;">
+                <%= translate("有新版本（") %><span style="color:red; font-weight:bold;"><%= cloud_version %></span><%= translate("），点击更新") %>
+            </button>
+        </p>
+    </form>
+    <% else %>
+    <p>
+        <button type="button" disabled
+                style="border:2px solid #4CAF50; padding:10px 20px; font-size:16px; background:#fff; color:red;">
+            <%= translate("已经是最新版本") %>
+        </button>
+    </p>
+    <% end %>
+</div>
+
+<!-- 静态提示信息区域 -->
+<div id="message" style="font-size:16px; color:green; display:none; margin-top:10px;">
+    <%= translate("已开始更新系统，稍后重启归来") %>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.getElementById("update-form");
+        if (form) {
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                // 隐藏更新按钮区域，显示静态提示信息
+                document.getElementById("update-container").style.display = "none";
+                document.getElementById("message").style.display = "block";
+                // 采用 AJAX 调用更新 API，不刷新页面
+                fetch('<%= luci.dispatcher.build_url("admin/system/romupdate/start") %>', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: 'action=update'
+                }).then(function(response) {
+                    return response.text();
+                }).then(function(data) {
+                    console.log(data);
+                    // 这里保持提示信息不隐藏，直到用户刷新页面
+                }).catch(function(error) {
+                    console.error('Error:', error);
+                });
+            });
+        }
+    });
+</script>
+<%+footer%>

@@ -1,0 +1,8 @@
+config general 'settings'
+    option enabled '1'
+    # 选择更新脚本模式：
+    # "keep" 表示使用保留配置更新脚本路径，
+    # "nokeep" 表示使用不保留配置更新脚本路径
+    option update_mode 'keep'
+    option update_script_keep '/usr/share/Lenyu-auto.sh'
+    option update_script_nokeep '/usr/share/Lenyu-no-auto.sh'

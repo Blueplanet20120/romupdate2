@@ -1,0 +1,32 @@
+msgid "Romupdate"
+msgstr "ROM升级"
+
+msgid "Enable Romupdate"
+msgstr "启用系统升级"
+
+msgid "Tick to enable firmware update"
+msgstr "打勾即启用固件更新件"
+
+msgid "xWeek Day"
+msgstr "更新时间"
+
+msgid "Everyday"
+msgstr "每天"
+
+msgid "Day"
+msgstr "天"
+
+msgid "xHour"
+msgstr "小时 [0~23]"
+
+msgid "xMinute"
+msgstr "分钟 [0~59]"
+
+msgid "Romupdate is a timed run luci-romupdate application"
+msgstr "ROM升级是一个在线升级ROM的程序."
+
+msgid "Do Upgrade"
+msgstr "执行升级"
+
+msgid "Upgrade to Latested Version"
+msgstr "固件升级"
