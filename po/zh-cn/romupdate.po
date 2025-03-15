@@ -1,32 +1,76 @@
-msgid "Romupdate"
-msgstr "ROM升级"
+msgid ""
+msgstr ""
+"Project-Id-Version: romupdate 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-11 00:00+0000\n"
+"PO-Revision-Date: 2025-03-11 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Chinese (Simplified)\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 
-msgid "Enable Romupdate"
-msgstr "启用系统升级"
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:3
+msgid "系统更新配置"
+msgstr "System Update Configuration"
 
-msgid "Tick to enable firmware update"
-msgstr "打勾即启用固件更新件"
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:3
+msgid "配置系统自动更新相关参数"
+msgstr "Configure system auto-update parameters"
 
-msgid "xWeek Day"
-msgstr "更新时间"
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:7
+msgid "通用设置"
+msgstr "General Settings"
 
-msgid "Everyday"
-msgstr "每天"
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:10
+msgid "更新脚本模式"
+msgstr "Update Script Mode"
 
-msgid "Day"
-msgstr "天"
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:10
+msgid "选择默认的更新脚本类型"
+msgstr "Select the default update script type"
 
-msgid "xHour"
-msgstr "小时 [0~23]"
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:11
+msgid "保留配置更新脚本路径"
+msgstr "Keep configuration update script path"
 
-msgid "xMinute"
-msgstr "分钟 [0~59]"
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:12
+msgid "不保留配置更新脚本路径"
+msgstr "Do not keep configuration update script path"
 
-msgid "Romupdate is a timed run luci-romupdate application"
-msgstr "ROM升级是一个在线升级ROM的程序."
+#: /usr/lib/lua/luci/model/cbi/romupdate.lua:18
+msgid "返回系统更新页面"
+msgstr "Return to the system update page"
 
-msgid "Do Upgrade"
-msgstr "执行升级"
+#: luci/controller/romupdate.lua:3
+msgid "系统更新配置"
+msgstr "System Update Configuration"
 
-msgid "Upgrade to Latested Version"
-msgstr "固件升级"
+#: luci/controller/romupdate.lua:8
+msgid "系统更新"
+msgstr "System Update"
+
+#: luci/view/romupdate.htm:3
+msgid "系统更新"
+msgstr "System Update"
+
+#: luci/view/romupdate.htm:8
+msgid "当前版本"
+msgstr "Current Version"
+
+#: luci/view/romupdate.htm:14
+msgid "有新版本（"
+msgstr "A new version is available ("
+
+#: luci/view/romupdate.htm:14
+msgid "），点击更新"
+msgstr "), click to update"
+
+#: luci/view/romupdate.htm:21
+msgid "已经是最新版本"
+msgstr "Already up to date"
+
+#: luci/view/romupdate.htm:28
+msgid "已开始更新系统，稍后重启归来"
+msgstr "System update started, please wait for reboot"

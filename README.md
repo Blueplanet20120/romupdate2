@@ -2,7 +2,7 @@
 
 # Special thanks:
 
-    ·luci-app-romupdate.
+    ·romupdate2.
 
     ·This is a immortalwrt branch.
     .2025-03-12.
